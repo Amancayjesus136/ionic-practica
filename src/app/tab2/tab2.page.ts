@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,7 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
+  characters: any[] = [];
 
-  constructor() {}
+  constructor(private http: HttpClient) {
+    this.loadCharacters();
+  }
 
+  loadCharacters() {
+    this.http.get('assets/db.json').subscribe((data: any) => {
+      this.characters = data.characters;
+    });
+  }
 }

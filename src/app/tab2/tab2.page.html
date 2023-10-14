@@ -13,5 +13,31 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+
+  <ion-content>
+    <ion-accordion-group>
+      <ion-accordion *ngFor="let character of characters" [value]="character.id">
+        <ion-item slot="header" color="light">
+          <ion-label>{{ character.name }}</ion-label>
+        </ion-item>
+        <div class="ion-padding" slot="content">
+          <p>Raza: {{ character.race }}</p>
+          <p>Género: {{ character.gender }}</p>
+          <p>{{ character.bio }}</p>
+          <p>Salud: {{ character.health }}</p>
+          <p>Ataque: {{ character.attack }}</p>
+          <p>Defensa: {{ character.defense }}</p>
+          <p>Velocidad de restauración de ki: {{ character.kiRestoreSpeed }}</p>
+          <p>Habilidades:</p>
+          <ul>
+            <li *ngFor="let ability of character.abilities">{{ ability }}</li>
+          </ul>
+        </div>
+      </ion-accordion>
+    </ion-accordion-group>
+  </ion-content>
+s  
+  
+  
+
 </ion-content>
